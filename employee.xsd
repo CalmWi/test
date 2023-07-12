@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emps="https://www.example.org/employee" xmlns:orgs="https://www.example.org/organization" xmlns:stat="https://www.example.org/status" targetNamespace="https://www.example.org/employee" version="1.0">
+
+  <xs:import namespace="https://www.example.org/status" schemaLocation="status.xsd"/>
+
+  <xs:import namespace="https://www.example.org/organization" schemaLocation="organization.xsd"/>
+
+  <xs:complexType name="employee">
+    <xs:sequence>
+      <xs:element name="FIO" type="xs:string"/>
+      <xs:element minOccurs="0" name="BirthdayDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="Organizations">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Organization" type="orgs:organization"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
